@@ -1,0 +1,27 @@
+<p>data-binding-demo works!</p>
+<h1>{{ title }}</h1>
+<h3>{{ description }}</h3>
+<h1>{{ message }}</h1>
+
+<hr>
+
+<img [src]="imageUrl" [width]="w" [height]="h" [alt]="altText">
+
+<hr>
+
+<p [style.color]="textColor">This text is blue!</p>
+
+<hr>
+
+<p [class.highlighted]="isHighlighted">This text is highlighted!</p>
+
+<hr>
+
+<input [(ngModel)]="yourName" placeholder="Enter your name">
+<p>Hello, {{ yourName }}!</p>
+
+<hr>
+
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+<p>Count: {{ count }}</p>
