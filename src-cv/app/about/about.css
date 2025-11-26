@@ -1,0 +1,96 @@
+/* 🌸 ABOUT SECTION */
+.about-section {
+  padding: 60px 20px;
+  background-color: #fdf2f8;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 750px;
+  margin: 20px auto;
+  line-height: 1.7;
+  text-align: justify;
+  animation: fadeInUp 1.2s ease;
+}
+
+.highlight {
+  color: #d17a9b;
+  font-weight: 600;
+}
+
+.tech {
+  color: #61dafb;
+  font-weight: 500;
+}
+
+/* 🌸 SECTION TITLE */
+.section-title {
+  font-size: 2.2rem;
+  background-color: #a14768;
+  color: #fad6e4;
+  padding: 10px 0;
+  border-radius: 12px;
+  padding: 20px;
+  display: inline-block;
+  margin-bottom: 30px;
+  animation: fadeInDown 1s ease;
+}
+
+/* 🌸 BUBBLE TAGS */
+.bubble-tags {
+  margin: 25px 0;
+}
+
+.tag {
+  display: inline-block;
+  background: #ffe8f1;
+  border: 1px solid #f7c8dc;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  color: #c15b82;
+  animation: popBounce 1.5s ease infinite alternate;
+}
+
+/* 🌸 BUTTON */
+.btn-learn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #d17a9b;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-learn:hover {
+  background: #b86182;
+  transform: scale(1.05);
+}
+
+/* 🌸 ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes popBounce {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.fade-in {
+  animation: fadeInUp 1.2s ease;
+}

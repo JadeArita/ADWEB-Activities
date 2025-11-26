@@ -1,0 +1,152 @@
+/* 🌸 HERO SECTION */
+.hero-section {
+  position: relative;
+  padding: 80px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #d17a9b;
+}
+
+.intro, .description{
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-size: 30px;
+  background-color: #ecc9d6;
+  text-align: center;
+  color: #993159;
+
+}
+
+/* 🌸 CUTE TAG BUBBLES */
+.bubble-tags {
+  margin: 20px 0;
+}
+
+.tag {
+  display: inline-block;
+  background: #ffe8f1;
+  border: 1px solid #f7c8dc;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  color: #c15b82;
+  animation: popBounce 1.5s ease infinite alternate;
+}
+
+/* 🌸 BUTTON */
+.btn-learn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #d17a9b;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-learn:hover {
+  background: #b86182;
+  transform: scale(1.05);
+}
+
+/* 🌸 FLOATING SHAPES */
+.floating-shapes .shape {
+  position: absolute;
+  background: #f7dbe8;
+  opacity: 0.5;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape1 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 5%;
+}
+
+.shape2 {
+  width: 180px;
+  height: 180px;
+  top: 60%;
+  right: 10%;
+}
+
+.shape3 {
+  width: 90px;
+  height: 90px;
+  top: 75%;
+  left: 50%;
+}
+
+/* 🌸 FUN CARDS */
+.fun-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border-left: 5px solid #d17a9b;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+  transition: 0.3s ease;
+}
+
+.card h3 {
+  color: #d17a9b;
+  margin-bottom: 8px;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes popBounce {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.animate-fade {
+  animation: fadeIn 1.2s ease;
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

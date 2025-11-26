@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #faf7f9;
+  color: #333;
+}
+
+.page-wrapper {
+  padding: 40px;
+  min-height: 80vh;
+}
+
+/* Shared titles */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #d17a9b;
+  border-left: 6px solid #d17a9b;
+  padding-left: 12px;
+  margin-bottom: 15px;
+}

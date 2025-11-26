@@ -1,0 +1,26 @@
+/* Optional: add a subtle animation to each skill-box */
+.skill-box {
+  background: #fff;
+  border-left: 5px solid #d17a9b;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Keep h3 styling */
+.skill-box h3 {
+  color: #d17a9b;
+  margin-bottom: 8px;
+}
+
+/* Optional: highlight skill names inside the paragraph */
+.skill-box p {
+  color: #555;
+  line-height: 1.5;
+}
