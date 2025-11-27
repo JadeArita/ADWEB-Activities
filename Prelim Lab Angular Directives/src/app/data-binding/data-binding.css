@@ -1,0 +1,79 @@
+/* --- General Page Layout --- */
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* --- Headings --- */
+h1 {
+  text-align: center;
+  color: #830467;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+h2 {
+  color: #5d6d7e;
+  padding-bottom: 5px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-left: 4px solid #c272b0;
+  padding-left: 10px;
+}
+
+/* --- Section Containers --- */
+section {
+
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Class Binding Styles --- */
+.passing {
+  color: #28a745;
+  font-weight: bold;
+  padding: 8px;
+  background-color: #e6f7e8;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.failing {
+  color: #dc3545;
+  font-weight: bold;
+  padding: 8px;
+  background-color: #fbe6e8;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.box {
+  border: 2px solid #5d6d7e;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: default;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

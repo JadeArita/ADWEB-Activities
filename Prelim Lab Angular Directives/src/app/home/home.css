@@ -1,0 +1,36 @@
+.home-container {
+  padding: 40px;
+  text-align: center;
+  background-color: rgb(243, 215, 219);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(231, 140, 140, 0.05);
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+h1 {
+  color: #a72a8c;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+p {
+  color: rgb(189, 121, 189);
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+.welcome-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-info {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #a72a8c;
+  font-size: 0.9em;
+  color: rgb(189, 121, 189);
+}

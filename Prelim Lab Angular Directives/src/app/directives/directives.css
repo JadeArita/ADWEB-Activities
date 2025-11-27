@@ -1,0 +1,138 @@
+/* --- General Page Layout --- */
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #f7f9fc; /* Very light blue/grey background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+h2 {
+  color: #5d6d7e; /* Subdued dark blue for headings */
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 20px 0;
+}
+
+/* --- Table Styles (General Structure) --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle lift effect */
+  border-radius: 6px;
+  overflow: hidden; /* Ensures border radius applies */
+}
+
+td, th {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* --- Buttons --- */
+button {
+  background-color: #c272b0;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 10px; /* Space out buttons */
+}
+
+button:hover {
+  background-color: #c272b0;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* --- Conditional Content Styles --- */
+h2 {
+  font-size: 1.2em;
+}
+
+p {
+  padding: 5px 0;
+  margin: 0;
+}
+
+/* Input for month filtering */
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* --- Student List Table (Unique Styling) --- */
+thead th {
+  background-color: #e6f3ff; /* Very light blue header */
+  color: #c272b0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+/* Status Column Styling - Using attribute selectors for better targeting */
+/* Note: The HTML for the student list uses nested <p> tags with @if/@else to determine status.
+   The following CSS targets the text color within those table cells. */
+
+/* Active Status: Green */
+/* You would need to add a class like 'active-status' to the HTML <p> tag,
+   but based on the previous code, we'll try to target the content directly: */
+td:has(p:contains("Active")) p {
+    color: #28a745; /* Green */
+    font-weight: bold;
+}
+
+/* Inactive Status: Red */
+td:has(p:contains("Inactive")) p {
+    color: #dc3545; /* Red */
+    font-weight: bold;
+}
+
+/* If the above content-based selectors don't work due to Angular compilation,
+   you must use the classes defined earlier (if you had them) or stick to the simple color applied here.
+   If you want to use the Angular-specific CSS based on the previous image, that part is: */
+
+/* This relies on the browser supporting the :has selector and the structure from the image */
+/* td:has(@if(item.isActive == true)) p {
+    color: #28a745;
+    font-weight: bold;
+}
+
+td:has(@else) p {
+    color: #dc3545;
+    font-weight: bold;
+} */
+
+
+/* Styling the list within the table cell (for cityList) */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  padding: 4px 0;
+  border-bottom: 1px dotted #f0f0f0;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
