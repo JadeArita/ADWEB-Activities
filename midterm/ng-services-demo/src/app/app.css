@@ -1,0 +1,43 @@
+/* app.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+th {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 24px;
+  text-align: left;
+}
+
+td {
+  padding: 16px 24px;
+  font-size: 0.875rem;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: #f9fafb;
+  transition: background-color 0.2s ease;
+}
+
+/* Price column alignment */
+td:last-child, th:last-child {
+  text-align: right;
+  font-family: 'Courier New', monospace; /* Monospace for numbers alignment */
+  font-weight: 500;
+}
