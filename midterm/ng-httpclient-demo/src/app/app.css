@@ -1,0 +1,85 @@
+/* Clean Sans-Serif Font & Background */
+body {
+  background-color: #fffafa; /* Soft Blush White */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px;
+  color: #5d5d5d;
+}
+
+h1 {
+  color: #9b89b3; /* Lavender */
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #d8a7b1; /* Blush Pink */
+  margin-top: 30px;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #f2e1eb, #e0d7ff, #f2e1eb);
+  margin-bottom: 20px;
+}
+
+/* Pastel Table Styling */
+.pastel-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(216, 167, 177, 0.2); /* Soft Pink Shadow */
+  border: none;
+}
+
+.pastel-table thead {
+  background-color: #fce4ec; /* Soft Blush */
+}
+
+.pastel-table th {
+  padding: 18px;
+  color: #8e73af; /* Lavender Purple */
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.pastel-table td {
+  padding: 15px;
+  border-bottom: 1px solid #faf0f5;
+  font-size: 0.95rem;
+}
+
+.pastel-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Hover Effect */
+.pastel-table tbody tr:hover {
+  background-color: #f8f4ff; /* Very Light Lavender */
+}
+
+/* Status Colors */
+.status-completed {
+  color: #81c784;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #f06292; /* Deep Blush */
+  font-weight: bold;
+}
+
+/* Footer Styling */
+.user-info {
+  margin-top: 50px;
+  text-align: center;
+  color: #9b89b3;
+  font-size: 1.1rem;
+  border-top: 1px solid #f2e1eb;
+  padding-top: 20px;
+}

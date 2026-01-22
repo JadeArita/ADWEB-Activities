@@ -1,0 +1,58 @@
+<h1>{{ title() }}</h1>
+<hr>
+
+<h2>List from Main (Users)</h2>
+<table class="pastel-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of httpusers; track user.id) {
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<br><hr><br>
+
+<h2>Challenge Table</h2>
+<table class="pastel-table">
+  <thead>
+    <tr>
+      <th>Task ID</th>
+      <th>Task Description</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (task of tasks; track task.id) {
+      <tr>
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>
+          <span [class.status-completed]="task.completed"
+                [class.status-pending]="!task.completed">
+            {{ task.completed ? '✅ Completed' : '❌ Pending' }}
+          </span>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<footer class="user-info">
+  <p><strong>{{ "Jade Arita" }}</strong></p>
+  <p>Section: WD - 303</p>
+</footer>
+
+<router-outlet />
