@@ -1,0 +1,23 @@
+<div style="max-width: 1100px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+
+  <section style="background: white; padding: 20px; border: 1px solid #ddd;">
+    <h2 style="color: #001F3F;">Contact Us</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <input [(ngModel)]="userName" type="text" placeholder="Full Name" style="padding: 12px;">
+      <input [(ngModel)]="userEmail" type="email" placeholder="Email Address" style="padding: 12px;">
+      <input [(ngModel)]="userSubject" type="text" placeholder="Subject" style="padding: 12px;">
+      <textarea [(ngModel)]="userMessage" placeholder="Message" rows="5" style="padding: 12px;"></textarea>
+      <button (click)="submitForm()" style="padding: 15px; background: #001F3F; color: white; border: none; cursor: pointer;">Submit</button>
+    </div>
+  </section>
+
+  <section style="background: #fdfdf5; padding: 30px; border-top: 5px solid #001F3F;">
+    <h2 style="color: #001F3F; margin-top: 0;">Form Preview</h2>
+    <div style="line-height: 2; border-top: 1px dashed #ccc; padding-top: 10px;">
+      <p><strong>NAME:</strong> {{ userName | uppercase }}</p>
+      <p><strong>EMAIL:</strong> {{ userEmail }}</p>
+      <p><strong>SUBJECT:</strong> {{ userSubject }}</p>
+      <p><strong>MESSAGE:</strong> {{ userMessage | truncate:50 }}</p>
+    </div>
+  </section>
+</div>

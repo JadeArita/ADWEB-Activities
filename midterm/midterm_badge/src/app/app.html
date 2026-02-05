@@ -1,0 +1,24 @@
+<nav style="background: #001F3F; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;">
+  <div style="display: flex; gap: 20px;">
+    <a routerLink="/home" routerLinkActive="active-link" style="color: #FFFFF0; text-decoration: none; font-weight: 500;">Home</a>
+    <a routerLink="/about" routerLinkActive="active-link" style="color: #FFFFF0; text-decoration: none; font-weight: 500;">About</a>
+    <a routerLink="/services" routerLinkActive="active-link" style="color: #FFFFF0; text-decoration: none; font-weight: 500;">Services</a>
+    <a routerLink="/contact" routerLinkActive="active-link" style="color: #FFFFF0; text-decoration: none; font-weight: 500;">Contact</a>
+  </div>
+  <div style="color: #FFFFF0; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px;">CommunityConnect</div>
+</nav>
+
+<style>
+  .active-link {
+    border-bottom: 2px solid #FFFFF0;
+    padding-bottom: 4px;
+  }
+</style>
+
+<main style="padding: 20px; min-height: 80vh;">
+  <router-outlet></router-outlet>
+</main>
+
+<footer style="background: #001F3F; color: #FFFFF0; padding: 20px; text-align: center;">
+  <p>Community Help Desk Portal | {{ today | date:'yyyy' }}</p>
+</footer>

@@ -1,0 +1,29 @@
+<div style="max-width: 1000px; margin: 40px auto; padding: 20px;">
+  <h1 style="color: #001F3F;">Our Services / Knowledge Base</h1>
+
+  <input [formControl]="searchControl" type="text" placeholder="Search by title or body..."
+         style="width: 100%; padding: 15px; margin: 20px 0; border: 2px solid #001F3F; font-size: 1rem;">
+
+  @if (filteredPosts$ | async; as posts) {
+    <div style="display: grid; gap: 20px;">
+      @for (post of posts; track post.id) {
+        <div style="padding: 20px; border: 1px solid #eee; background: white;">
+          <small style="color: #999;">Record ID: {{ post.id }}</small>
+          <h3 style="color: #001F3F; margin: 10px 0;">{{ post.title }}</h3>
+          <p style="color: #555;">{{ post.body | truncate:140 }}</p>
+        </div>
+      } @empty {
+        <p style="text-align: center; color: #999;">No matches found for your search.</p>
+      }
+    </div>
+  } @else {
+    <div style="text-align: center; padding: 50px;">
+      <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #001F3F; border-radius: 50%; width: 40px; height: 40px; animation: spin 2s linear infinite; margin: auto;"></div>
+      <p style="margin-top: 15px; color: #001F3F;">Accessing Knowledge Base...</p>
+    </div>
+  }
+</div>
+
+<style>
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>

@@ -1,0 +1,15 @@
+/* Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --ivory: #FFFFF0;
+  --dark-blue: #001F3F;
+  --text-gray: #333333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ivory);
+  color: var(--dark-blue);
+}
