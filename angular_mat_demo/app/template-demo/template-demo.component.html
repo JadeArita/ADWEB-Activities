@@ -1,0 +1,80 @@
+<div class="main-wrapper">
+
+  @if (showConfirmation) {
+    <div class="confirmation-popup">
+      Form Submitted Successfully!
+    </div>
+  }
+
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div class="form-banner">SIGN UP</div>
+
+    <div class="field-container">
+      <label class="label-text">USERNAME</label>
+      <input class="input-box" name="username" [(ngModel)]="username" placeholder="Enter username" required>
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">EMAIL ADDRESS</label>
+      <input class="input-box" name="email" [(ngModel)]="email" placeholder="Enter email" required email>
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">PASSWORD</label>
+      <input class="input-box" type="password" name="password" [(ngModel)]="password" placeholder="Enter password" required minlength="8">
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">PHONE NUMBER</label>
+      <input class="input-box" name="phone" [(ngModel)]="phone" placeholder="09123456789" required pattern="[0-9]{10,11}">
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">DATE OF BIRTH</label>
+      <input class="input-box" type="date" name="dob" [(ngModel)]="dob" required>
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">COUNTRY</label>
+      <select class="input-box" name="country" [(ngModel)]="country" required>
+        <option value="" disabled selected>Select country</option>
+        <option value="Philippines">Philippines</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+      </select>
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">ASSIGNED ROLE</label>
+      <select class="input-box" name="role" [(ngModel)]="role" required>
+        <option value="" disabled selected>Select role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="guest">Guest</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="label-text">GENDER</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" [(ngModel)]="gender" value="male" required> Male</label>
+        <label><input type="radio" name="gender" [(ngModel)]="gender" value="female" required> Female</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label-text">STATUS</label>
+      <div class="radio-group">
+        <label><input type="radio" name="status" [(ngModel)]="status" value="permanent" required> Permanent</label>
+        <label><input type="radio" name="status" [(ngModel)]="status" value="probationary" required> Probationary</label>
+      </div>
+    </div>
+
+    <div class="field-container">
+      <label class="label-text">COMMENTS</label>
+      <textarea class="input-box" name="comments" [(ngModel)]="comments" placeholder="Notes..." rows="3"></textarea>
+    </div>
+
+    <input class="btn" type="submit" value="SUBMIT" [disabled]="!myForm.valid">
+  </form>
+</div>

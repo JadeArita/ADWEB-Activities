@@ -1,0 +1,119 @@
+<div class="main-wrapper">
+  <div class="card">
+    <div class="form-banner">Reactive Form</div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="field-container">
+        <label>USERNAME</label>
+        <input class="input" placeholder="e.g. name123" formControlName="username" />
+        @if (isInvalid('username')) {
+          <small class="error">Username must be 4-12 characters.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>PHONE NUMBER</label>
+        <input class="input" placeholder="09123456789" formControlName="phone" />
+        @if (isInvalid('phone')) {
+          <small class="error">Enter a valid 10-11 digit phone number.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>DATE OF BIRTH</label>
+        <input class="input" type="date" formControlName="dob" />
+        @if (isInvalid('dob')) {
+          <small class="error">Date of birth is required.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>COUNTRY</label>
+        <select class="input" formControlName="country">
+          <option value="" disabled selected>Select Country</option>
+          <option value="Philippines">Philippines</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+        </select>
+        @if (isInvalid('country')) {
+          <small class="error">Please select a country.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>EMAIL ADDRESS</label>
+        <input class="input" type="email" placeholder="name@gmail.com" formControlName="email" />
+        @if (isInvalid('email')) {
+          <small class="error">Please enter a valid email address.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>PASSWORD</label>
+        <input class="input" type="password" placeholder="Enter password" formControlName="password" />
+        @if (isInvalid('password')) {
+          <small class="error">Must be 8+ chars with Upper, Lower, and Number.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label>ASSIGNED ROLE</label>
+        <select class="input" formControlName="role">
+          <option value="" disabled selected>Select role</option>
+          @for (r of roles; track r) {
+            <option [value]="r">{{ r }}</option>
+          }
+        </select>
+        @if (isInvalid('role')) {
+          <small class="error">Please select a role.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label class="label-text">GENDER</label>
+        <div class="radio-group">
+          <label><input type="radio" value="male" formControlName="gender"> Male</label>
+          <label><input type="radio" value="female" formControlName="gender"> Female</label>
+        </div>
+        @if (isInvalid('gender')) {
+          <small class="error">Please select gender.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label class="label-text">STATUS</label>
+        <div class="radio-group">
+          <label><input type="radio" value="permanent" formControlName="status"> Permanent</label>
+          <label><input type="radio" value="probationary" formControlName="status"> Probationary</label>
+        </div>
+        @if (isInvalid('status')) {
+          <small class="error">Please select status.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <label class="label-text">COMMENTS (NOTES)</label>
+        <textarea class="input" formControlName="comments" rows="3" placeholder="Additional notes..."></textarea>
+      </div>
+
+      <button class="btn" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </form>
+  </div>
+
+  @if (submittedData) {
+    <div class="result-card">
+      <h3 class="result-title">SUBMISSION SUMMARY</h3>
+      <div class="result-grid">
+        <div class="result-item"><strong>User:</strong> {{ submittedData.username }}</div>
+        <div class="result-item"><strong>Email:</strong> {{ submittedData.email }}</div>
+        <div class="result-item"><strong>Phone:</strong> {{ submittedData.phone }}</div>
+        <div class="result-item"><strong>DOB:</strong> {{ submittedData.dob }}</div>
+        <div class="result-item"><strong>Country:</strong> {{ submittedData.country }}</div>
+        <div class="result-item"><strong>Role:</strong> {{ submittedData.role }}</div>
+        <div class="result-item"><strong>Gender:</strong> {{ submittedData.gender }}</div>
+        <div class="result-item"><strong>Status:</strong> {{ submittedData.status }}</div>
+        <div class="result-item"><strong>Notes:</strong> {{ submittedData.comments || 'N/A' }}</div>
+      </div>
+    </div>
+  }
+</div>

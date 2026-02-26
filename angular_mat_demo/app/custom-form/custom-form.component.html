@@ -1,0 +1,87 @@
+<div class="main-wrapper">
+  <div class="card">
+    <div class="form-banner">JOB APPLICATION</div>
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+
+      <div class="field-container">
+        <label>FULL NAME</label>
+        <input class="input" placeholder="Juan Dela Cruz" formControlName="fullName" />
+        @if (isInvalid('fullName')) { <small class="error">Full name (min 5 chars) is required.</small> }
+      </div>
+
+      <div class="two-column">
+        <div class="field-container">
+          <label>EMAIL ADDRESS</label>
+          <input class="input" type="email" placeholder="juan@example.com" formControlName="email" />
+          @if (isInvalid('email')) { <small class="error">Valid email is required.</small> }
+        </div>
+        <div class="field-container">
+          <label>PHONE NUMBER</label>
+          <input class="input" placeholder="09171234567" formControlName="phone" />
+          @if (isInvalid('phone')) { <small class="error">10-11 digits required.</small> }
+        </div>
+      </div>
+
+      <div class="field-container">
+        <label>APPLYING FOR POSITION</label>
+        <select class="input" formControlName="position">
+          <option value="" disabled selected>Select Position</option>
+          @for (p of positions; track p) { <option [value]="p">{{ p }}</option> }
+        </select>
+        @if (isInvalid('position')) { <small class="error">Please select a position.</small> }
+      </div>
+
+      <div class="two-column">
+        <div class="field-container">
+          <label>YEARS OF EXPERIENCE</label>
+          <input class="input" type="number" formControlName="experience" placeholder="e.g. 2" />
+          @if (isInvalid('experience')) { <small class="error">Required.</small> }
+        </div>
+        <div class="field-container">
+          <label>EXPECTED SALARY (PHP)</label>
+          <input class="input" type="text" formControlName="expectedSalary" placeholder="e.g. 50,000" />
+          @if (isInvalid('expectedSalary')) { <small class="error">Required.</small> }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="label-text">AVAILABILITY</label>
+        <div class="radio-group">
+          <label><input type="radio" value="Immediate" formControlName="availability"> Immediate</label>
+          <label><input type="radio" value="15 Days" formControlName="availability"> 15 Days</label>
+          <label><input type="radio" value="30 Days" formControlName="availability"> 30 Days</label>
+        </div>
+        @if (isInvalid('availability')) { <small class="error">Please select availability.</small> }
+      </div>
+
+      <div class="field-container">
+        <label>PORTFOLIO URL (OPTIONAL)</label>
+        <input class="input" placeholder="https://myportfolio.com" formControlName="portfolioUrl" />
+        @if (isInvalid('portfolioUrl')) { <small class="error">Please enter a valid URL.</small> }
+      </div>
+
+      <div class="field-container">
+        <label class="label-text">COVER LETTER / MESSAGE</label>
+        <textarea class="input" formControlName="coverLetter" rows="4" placeholder="Tell us why you are a good fit..."></textarea>
+        @if (isInvalid('coverLetter')) { <small class="error">Cover letter is required.</small> }
+      </div>
+
+      <button class="btn" type="submit" [disabled]="jobForm.invalid">SUBMIT APPLICATION</button>
+    </form>
+  </div>
+
+  @if (submittedInfo) {
+    <div class="result-card">
+      <h3 class="result-title">APPLICATION RECEIVED</h3>
+      <div class="result-grid">
+        <div class="result-item"><strong>Applicant:</strong> {{ submittedInfo.fullName }}</div>
+        <div class="result-item"><strong>Email:</strong> {{ submittedInfo.email }}</div>
+        <div class="result-item"><strong>Position:</strong> {{ submittedInfo.position }}</div>
+        <div class="result-item"><strong>Experience:</strong> {{ submittedInfo.experience }} Year(s)</div>
+        <div class="result-item"><strong>Salary:</strong> {{ submittedInfo.expectedSalary }}</div>
+        <div class="result-item"><strong>Availability:</strong> {{ submittedInfo.availability }}</div>
+        <div class="result-item" style="grid-column: span 2;"><strong>Portfolio:</strong> {{ submittedInfo.portfolioUrl || 'N/A' }}</div>
+      </div>
+    </div>
+  }
+</div>
