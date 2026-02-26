@@ -1,0 +1,481 @@
+/* ══════════════════════════════════════════════════════
+   Sports Tournament Registration — Luxury Glass Theme
+   Consistent with existing Register / Reactive / Template
+   ══════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@200;300;400;600&display=swap');
+
+/* ── Page Wrapper ─────────────────────────────────────── */
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── Hero Block ───────────────────────────────────────── */
+.hero-block {
+  text-align: center;
+  padding: 48px 20px 52px;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(212,175,100,0.6);
+  margin: 0 0 14px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 900;
+  color: #f5f0e8;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+
+.hero-accent {
+  color: #d4af64;
+}
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ── Form Card (each section) ─────────────────────────── */
+.form-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 4px;
+  padding: 38px 44px 40px;
+  margin-bottom: 24px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.38),
+    0 1px 0 rgba(255,255,255,0.1) inset;
+  animation: revealUp 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger each card slightly */
+.form-card:nth-child(2)  { animation-delay: 0.05s; }
+.form-card:nth-child(3)  { animation-delay: 0.10s; }
+.form-card:nth-child(4)  { animation-delay: 0.15s; }
+.form-card:nth-child(5)  { animation-delay: 0.20s; }
+
+/* ── Section Header ───────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.section-icon {
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+  color: #d4af64;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f5f0e8;
+  margin: 0 0 3px;
+  letter-spacing: -0.3px;
+}
+
+.section-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: rgba(245,240,232,0.45);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.section-divider {
+  border-color: rgba(212,175,100,0.18) !important;
+  margin-bottom: 28px !important;
+}
+
+/* ── Field Row / Two-column grid ──────────────────────── */
+.field-row {
+  margin-bottom: 6px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* ── Angular Material Overrides ───────────────────────── */
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: rgba(255,255,255,0.05) !important;
+  border-radius: 2px 2px 0 0 !important;
+}
+
+:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled):hover {
+  background: rgba(255,255,255,0.09) !important;
+}
+
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple::before {
+  border-bottom-color: rgba(212,175,100,0.35) !important;
+}
+
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: #d4af64 !important;
+}
+
+:host ::ng-deep .mdc-floating-label {
+  color: rgba(245,240,232,0.55) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.5px !important;
+}
+
+:host ::ng-deep .mdc-floating-label--float-above {
+  color: #d4af64 !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+}
+
+:host ::ng-deep .mat-mdc-input-element,
+:host ::ng-deep .mat-mdc-select-value-text {
+  color: #f5f0e8 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  caret-color: #d4af64 !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-error {
+  color: #f4a26a !important;
+  font-size: 11px !important;
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 0.5px;
+}
+
+/* Select panel */
+:host ::ng-deep .mat-mdc-select-arrow {
+  color: rgba(212,175,100,0.6) !important;
+}
+
+/* Textarea */
+:host ::ng-deep textarea.mat-mdc-input-element {
+  resize: vertical !important;
+  min-height: 80px !important;
+}
+
+/* Field suffix icon */
+.field-icon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: rgba(212,175,100,0.45) !important;
+}
+
+/* Optional tag inside label */
+.optional-tag {
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.35);
+  letter-spacing: 1px;
+}
+
+/* Required star */
+.req-star {
+  color: #f4a26a;
+  margin-left: 2px;
+}
+
+/* ── Radio Blocks ─────────────────────────────────────── */
+.radio-block {
+  margin-bottom: 22px;
+}
+
+.radio-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(212,175,100,0.8);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.radio-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+:host ::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked
+  + .mdc-radio__background .mdc-radio__outer-circle {
+  border-color: #d4af64 !important;
+}
+
+:host ::ng-deep .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled
+  + .mdc-radio__background .mdc-radio__inner-circle {
+  border-color: #d4af64 !important;
+}
+
+:host ::ng-deep .mat-mdc-radio-button .mdc-label {
+  color: rgba(245,240,232,0.85) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.5px;
+}
+
+/* Inline validation error */
+.inline-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #f4a26a;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ── Team Panel ───────────────────────────────────────── */
+.team-panel {
+  background: rgba(212,175,100,0.05);
+  border: 1px solid rgba(212,175,100,0.2);
+  border-radius: 3px;
+  padding: 24px 28px 18px;
+  margin-bottom: 10px;
+  animation: revealUp 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.team-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #d4af64;
+  margin-bottom: 18px;
+}
+
+.team-panel-label mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #d4af64;
+}
+
+/* ── Agreement Card ───────────────────────────────────── */
+.agreement-card {
+  border-color: rgba(212,175,100,0.25);
+}
+
+.agreement-block {
+  margin-bottom: 28px;
+}
+
+:host ::ng-deep .agreement-check .mdc-checkbox .mdc-checkbox__native-control:enabled:checked
+  ~ .mdc-checkbox__background {
+  background-color: #d4af64 !important;
+  border-color: #d4af64 !important;
+}
+
+:host ::ng-deep .agreement-check .mdc-label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  color: rgba(245,240,232,0.85) !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px;
+}
+
+/* ── Submit Button ────────────────────────────────────── */
+.submit-btn {
+  width: 100%;
+  padding: 16px !important;
+  height: auto !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+:host ::ng-deep .submit-btn.mat-mdc-raised-button:not(:disabled) {
+  background: linear-gradient(135deg, #c9a84c 0%, #e8cc8a 50%, #c9a84c 100%) !important;
+  color: #1a1508 !important;
+  box-shadow: 0 8px 32px rgba(212,175,100,0.35) !important;
+}
+
+:host ::ng-deep .submit-btn.mat-mdc-raised-button:not(:disabled):hover {
+  box-shadow: 0 14px 48px rgba(212,175,100,0.55) !important;
+  transform: translateY(-2px);
+}
+
+:host ::ng-deep .submit-btn.mat-mdc-raised-button:disabled {
+  background: rgba(255,255,255,0.07) !important;
+  color: rgba(255,255,255,0.28) !important;
+  cursor: not-allowed;
+}
+
+/* ── Summary / Confirmation Card ─────────────────────── */
+.summary-card {
+  background: rgba(93,184,138,0.06);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(93,184,138,0.3);
+  border-top: 3px solid #5db88a;
+  border-radius: 4px;
+  padding: 38px 44px 40px;
+  margin-top: 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  animation: revealUp 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+.summary-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.summary-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: #5db88a;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.summary-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f0e8;
+  margin: 0 0 3px;
+}
+
+.summary-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(93,184,138,0.75);
+  margin: 0;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.summary-group-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #d4af64;
+  margin: 0 0 14px;
+  border-bottom: 1px solid rgba(212,175,100,0.2);
+  padding-bottom: 8px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.s-key {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.45);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.s-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #f5f0e8;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* ── Tooltip overrides ────────────────────────────────── */
+:host ::ng-deep .mat-mdc-tooltip {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.5px !important;
+  background: rgba(26,21,8,0.92) !important;
+  border: 1px solid rgba(212,175,100,0.3) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* ── Datepicker toggle icon ───────────────────────────── */
+:host ::ng-deep .mat-datepicker-toggle button {
+  color: rgba(212,175,100,0.6) !important;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 720px) {
+  .form-card { padding: 28px 22px 30px; }
+  .two-col   { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-card { padding: 28px 22px 30px; }
+  .team-panel { padding: 20px 16px 14px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { letter-spacing: -1px; }
+  .radio-inline { flex-direction: column; gap: 10px; }
+}

@@ -1,0 +1,128 @@
+<div class="form-container">
+  <div class="form-header">
+    <h2 class="form-title">Registration</h2>
+    <p class="form-subtitle">Angular Material Demo</p>
+  </div>
+
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+
+    <!-- USERNAME -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Enter Text" formControlName="userName"
+        matTooltip="Choose a unique username for your account"
+        matTooltipPosition="right">
+    </mat-form-field>
+
+    <!-- EMAIL -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Enter Email" formControlName="email"
+        matTooltip="We'll use this to send your confirmation"
+        matTooltipPosition="right">
+      @if (formdata.controls['email'].invalid && formdata.controls['email'].touched) {
+        <mat-error>
+          Email is required and must be a valid email.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- PASSWORD + STRENGTH BAR -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Enter password" formControlName="password"
+        matTooltip="Minimum 8 characters. Add uppercase, numbers & symbols for a stronger password."
+        matTooltipPosition="right">
+      @if (formdata.controls['password'].invalid && formdata.controls['password'].touched) {
+        <mat-error>
+          Password is required and must be at least 8 characters long.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- PASSWORD STRENGTH — MatProgressBar -->
+    @if (formdata.get('password')?.value) {
+      <div class="strength-wrapper">
+        <mat-progress-bar
+          class="strength-bar"
+          [mode]="'determinate'"
+          [value]="passwordStrength"
+          [color]="passwordStrengthColor">
+        </mat-progress-bar>
+        <span class="strength-label strength-{{ passwordStrengthLabel | lowercase }}">
+          {{ passwordStrengthLabel }}
+        </span>
+      </div>
+    }
+
+    <!-- GENDER -->
+    <div class="radio-group">
+      <label class="radio-label">Gender</label>
+      <mat-radio-group formControlName="gender" class="gender-radio-group">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="other">Other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- ADDRESS -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Enter Address" formControlName="address"
+        matTooltip="Optional — your mailing or home address"
+        matTooltipPosition="right">
+    </mat-form-field>
+
+    <!-- BIRTH DATE -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Select a date" formControlName="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      @if (formdata.get('birthDate')?.hasError('required') && formdata.get('birthDate')?.touched) {
+        <mat-error>
+          Birth date is required.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- ANGULAR SKILL LEVEL -->
+    <div class="slider-group">
+      <label class="slider-label">
+        Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}
+      </label>
+      <mat-slider [min]="minSkillLevel" [max]="maxSkillLevel" [step]="1" [discrete]="true">
+        <input matSliderThumb formControlName="angularSkillLevel">
+      </mat-slider>
+    </div>
+
+    <!-- SUBMIT BUTTON (MatButton with Tooltip) -->
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="submit-btn"
+      [disabled]="!formdata.valid"
+      matTooltip="All required fields must be filled in"
+      [matTooltipDisabled]="formdata.valid">
+      Click Here
+    </button>
+
+    <!-- SUBMITTED DATA SUMMARY -->
+    @if (submitted) {
+      <div class="result-panel">
+        <p class="result-title">You have entered:</p>
+        <p>
+          Username: {{ userName }}<br>
+          Email: {{ email }}<br>
+          Password: {{ password }}<br>
+          Gender: {{ gender }}<br>
+          Address: {{ address }}<br>
+          Birth Date: {{ birthDate | date:'shortDate' }}<br>
+          Angular Skill Level: {{ angularSkillLevel }}
+        </p>
+      </div>
+    }
+
+  </form>
+</div>

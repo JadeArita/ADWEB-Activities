@@ -1,0 +1,68 @@
+/* ── Global Styles ── Luxury Glassmorphism Theme */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@200;300;400;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #111009;
+  background-image:
+    /* Film grain texture */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"),
+    /* Ambient gradient */
+    radial-gradient(ellipse at 20% 20%, rgba(93,184,138,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(212,175,100,0.05) 0%, transparent 60%);
+  color: #f5f0e8;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #111009; }
+::-webkit-scrollbar-thumb { background: rgba(212,175,100,0.35); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212,175,100,0.6); }
+
+/* ── SnackBar Global Overrides ── */
+.snack-success .mdc-snackbar__surface {
+  background: rgba(26, 21, 8, 0.92) !important;
+  border: 1px solid rgba(93, 184, 138, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 2px !important;
+}
+
+.snack-error .mdc-snackbar__surface {
+  background: rgba(26, 21, 8, 0.92) !important;
+  border: 1px solid rgba(244, 162, 106, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 2px !important;
+}
+
+.snack-success .mdc-snackbar__label,
+.snack-error .mdc-snackbar__label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  color: #f5f0e8 !important;
+}
+
+.snack-success .mat-mdc-snack-bar-action {
+  color: #5db88a !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+}
+
+.snack-error .mat-mdc-snack-bar-action {
+  color: #f4a26a !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+}

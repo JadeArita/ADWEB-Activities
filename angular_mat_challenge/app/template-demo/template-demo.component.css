@@ -1,0 +1,179 @@
+/* ── Template Demo ── Luxury Glassmorphism Theme (matches Register) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@200;300;400;600&display=swap');
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+  min-height: 80vh;
+}
+
+/* Confirmation Popup */
+.confirmation-popup {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(93,184,138,0.9), rgba(72,160,116,0.9));
+  color: #fff;
+  padding: 14px 48px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(93,184,138,0.5);
+  box-shadow: 0 8px 32px rgba(93,184,138,0.35);
+  z-index: 1000;
+  animation: slideIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes slideIn {
+  from { top: 40px; opacity: 0; }
+  to   { top: 80px; opacity: 1; }
+}
+
+form, .card {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 4px;
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.2) inset;
+  width: 100%;
+  max-width: 600px;
+  padding: 50px 55px;
+  box-sizing: border-box;
+  animation: revealUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-banner {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #f5f0e8;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.form-banner + p, .form-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(212,175,100,0.75);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.field-container, .form-group {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(212,175,100,0.8);
+}
+
+.input, .input-box {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(212,175,100,0.35);
+  color: #f5f0e8;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  box-sizing: border-box;
+  border-radius: 2px;
+  -webkit-appearance: none;
+}
+
+.input:focus, .input-box:focus {
+  border-bottom-color: #d4af64;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 24px rgba(212,175,100,0.12);
+}
+
+.input option, .input-box option {
+  background: #1a1508;
+  color: #f5f0e8;
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+.radio-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.85);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #d4af64;
+}
+
+textarea.input, textarea.input-box {
+  resize: vertical;
+  min-height: 90px;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #c9a84c 0%, #e8cc8a 50%, #c9a84c 100%);
+  color: #1a1508;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 8px 32px rgba(212,175,100,0.3);
+  border-radius: 2px;
+}
+
+.btn:hover:not(:disabled) {
+  box-shadow: 0 12px 48px rgba(212,175,100,0.5);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}

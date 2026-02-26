@@ -1,0 +1,389 @@
+<div class="page-wrapper">
+
+  <!-- ── Page Hero ── -->
+  <div class="hero-block">
+    <p class="hero-eyebrow">Angular Material · Reactive Forms</p>
+    <h1 class="hero-title">Sports Tournament<br><span class="hero-accent">Registration</span></h1>
+    <p class="hero-sub">Complete all required sections below to secure your place in the tournament.</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onClickSubmit()" autocomplete="off" novalidate>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 1 · PARTICIPANT INFORMATION
+    ═════════════════════════════════════════════ -->
+    <div class="form-card">
+      <div class="section-header">
+        <mat-icon class="section-icon">person</mat-icon>
+        <div>
+          <h2 class="section-title">Participant Information</h2>
+          <p class="section-sub">Personal details of the registrant</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="field-row two-col">
+        <!-- Full Name -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="e.g. Juan dela Cruz" formControlName="fullName"
+            matTooltip="Enter your complete legal name" matTooltipPosition="above">
+          <mat-icon matSuffix class="field-icon">badge</mat-icon>
+          @if (isInvalid('fullName')) {
+            <mat-error>Full name is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" placeholder="name@email.com" formControlName="email">
+          <mat-icon matSuffix class="field-icon">email</mat-icon>
+          @if (isInvalid('email')) {
+            <mat-error>A valid email address is required.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="field-row two-col">
+        <!-- Contact Number -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Contact Number</mat-label>
+          <input matInput placeholder="09XXXXXXXXX" formControlName="contactNumber"
+            matTooltip="Enter a valid 10–11 digit phone number" matTooltipPosition="above">
+          <mat-icon matSuffix class="field-icon">phone</mat-icon>
+          @if (isInvalid('contactNumber')) {
+            <mat-error>Enter a valid 10–11 digit contact number.</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Date of Birth -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="dobPicker" placeholder="MM/DD/YYYY"
+            formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobPicker></mat-datepicker>
+          @if (isInvalid('dateOfBirth')) {
+            <mat-error>Date of birth is required.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Gender -->
+      <div class="radio-block">
+        <label class="radio-heading">Gender <span class="req-star">*</span></label>
+        <mat-radio-group formControlName="gender" class="radio-inline">
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+          <mat-radio-button value="Other">Other</mat-radio-button>
+        </mat-radio-group>
+        @if (isInvalid('gender')) {
+          <small class="inline-error">Please select a gender.</small>
+        }
+      </div>
+
+      <!-- Address -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Address <span class="optional-tag">(Optional)</span></mat-label>
+        <input matInput placeholder="House No., Street, City, Province" formControlName="address">
+        <mat-icon matSuffix class="field-icon">location_on</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 2 · TOURNAMENT DETAILS
+    ═════════════════════════════════════════════ -->
+    <div class="form-card">
+      <div class="section-header">
+        <mat-icon class="section-icon">emoji_events</mat-icon>
+        <div>
+          <h2 class="section-title">Tournament Details</h2>
+          <p class="section-sub">Sport selection, category, and team information</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="field-row two-col">
+        <!-- Type of Sport -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Type of Sport</mat-label>
+          <mat-select formControlName="typeOfSport">
+            @for (sport of sports; track sport) {
+              <mat-option [value]="sport">{{ sport }}</mat-option>
+            }
+          </mat-select>
+          @if (isInvalid('typeOfSport')) {
+            <mat-error>Please select a sport.</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Category -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            @for (cat of categories; track cat) {
+              <mat-option [value]="cat">{{ cat }}</mat-option>
+            }
+          </mat-select>
+          @if (isInvalid('category')) {
+            <mat-error>Please select a category.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Participation Type -->
+      <div class="radio-block">
+        <label class="radio-heading">Participation Type <span class="req-star">*</span></label>
+        <mat-radio-group formControlName="participationType" class="radio-inline"
+          (change)="onParticipationTypeChange()">
+          <mat-radio-button value="Individual">Individual</mat-radio-button>
+          <mat-radio-button value="Team">Team</mat-radio-button>
+        </mat-radio-group>
+        @if (isInvalid('participationType')) {
+          <small class="inline-error">Please select a participation type.</small>
+        }
+      </div>
+
+      <!-- Team Fields — shown only when Team is selected -->
+      @if (isTeam) {
+        <div class="team-panel">
+          <div class="team-panel-label">
+            <mat-icon>groups</mat-icon>
+            <span>Team Details</span>
+          </div>
+
+          <div class="field-row two-col">
+            <!-- Team Name -->
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Team Name</mat-label>
+              <input matInput placeholder="Enter team name" formControlName="teamName">
+              <mat-icon matSuffix class="field-icon">shield</mat-icon>
+              @if (isInvalid('teamName')) {
+                <mat-error>Team name is required.</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Number of Team Members -->
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Number of Team Members</mat-label>
+              <input matInput type="number" min="1" placeholder="e.g. 5" formControlName="numberOfTeamMembers">
+              <mat-icon matSuffix class="field-icon">people</mat-icon>
+              @if (isInvalid('numberOfTeamMembers')) {
+                <mat-error>Please enter a valid number of members.</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="field-row two-col">
+            <!-- Coach Name -->
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Coach Name <span class="optional-tag">(Optional)</span></mat-label>
+              <input matInput placeholder="Enter coach name" formControlName="coachName">
+              <mat-icon matSuffix class="field-icon">sports</mat-icon>
+            </mat-form-field>
+
+            <!-- Team Contact Person -->
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Team Contact Person</mat-label>
+              <input matInput placeholder="Enter contact person name" formControlName="teamContactPerson">
+              <mat-icon matSuffix class="field-icon">contact_phone</mat-icon>
+              @if (isInvalid('teamContactPerson')) {
+                <mat-error>Team contact person is required.</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 3 · EVENT PREFERENCES
+    ═════════════════════════════════════════════ -->
+    <div class="form-card">
+      <div class="section-header">
+        <mat-icon class="section-icon">calendar_month</mat-icon>
+        <div>
+          <h2 class="section-title">Event Preferences</h2>
+          <p class="section-sub">Schedule and uniform preferences</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="field-row two-col">
+        <!-- Preferred Schedule -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Preferred Playing Schedule <span class="optional-tag">(Optional)</span></mat-label>
+          <mat-select formControlName="preferredSchedule">
+            @for (sched of schedules; track sched) {
+              <mat-option [value]="sched">{{ sched }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Jersey Size -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Jersey Size</mat-label>
+          <mat-select formControlName="jerseySize">
+            @for (size of jerseySizes; track size) {
+              <mat-option [value]="size">{{ size }}</mat-option>
+            }
+          </mat-select>
+          @if (isInvalid('jerseySize')) {
+            <mat-error>Please select a jersey size.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 4 · MEDICAL & EMERGENCY DETAILS
+    ═════════════════════════════════════════════ -->
+    <div class="form-card">
+      <div class="section-header">
+        <mat-icon class="section-icon">medical_services</mat-icon>
+        <div>
+          <h2 class="section-title">Medical &amp; Emergency Details</h2>
+          <p class="section-sub">For safety and emergency response purposes</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="field-row two-col">
+        <!-- Blood Type -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Blood Type <span class="optional-tag">(Optional)</span></mat-label>
+          <mat-select formControlName="bloodType">
+            @for (bt of bloodTypes; track bt) {
+              <mat-option [value]="bt">{{ bt }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Medical Conditions -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Medical Conditions <span class="optional-tag">(Optional)</span></mat-label>
+          <textarea matInput rows="3" placeholder="e.g. Asthma, Hypertension, None"
+            formControlName="medicalConditions"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="field-row two-col">
+        <!-- Emergency Contact Name -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Emergency Contact Name</mat-label>
+          <input matInput placeholder="Full name of contact person" formControlName="emergencyContactName">
+          <mat-icon matSuffix class="field-icon">contact_emergency</mat-icon>
+          @if (isInvalid('emergencyContactName')) {
+            <mat-error>Emergency contact name is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Emergency Contact Number -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Emergency Contact Number</mat-label>
+          <input matInput placeholder="09XXXXXXXXX" formControlName="emergencyContactNumber">
+          <mat-icon matSuffix class="field-icon">phone_in_talk</mat-icon>
+          @if (isInvalid('emergencyContactNumber')) {
+            <mat-error>Enter a valid 10–11 digit emergency contact number.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         SECTION 5 · AGREEMENT
+    ═════════════════════════════════════════════ -->
+    <div class="form-card agreement-card">
+      <div class="section-header">
+        <mat-icon class="section-icon">gavel</mat-icon>
+        <div>
+          <h2 class="section-title">Agreement</h2>
+          <p class="section-sub">Please read and confirm before submitting</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="agreement-block">
+        <mat-checkbox formControlName="agreement" class="agreement-check">
+          I certify that the information provided is accurate and I agree to follow tournament rules.
+        </mat-checkbox>
+        @if (submitted && form.get('agreement')?.invalid) {
+          <small class="inline-error">You must agree to the tournament rules to proceed.</small>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit" class="submit-btn"
+        [disabled]="submitted && form.invalid"
+        matTooltip="Complete all required fields to submit"
+        [matTooltipDisabled]="form.valid">
+        <mat-icon>how_to_reg</mat-icon>
+        &nbsp;Submit Registration
+      </button>
+    </div>
+
+  </form>
+
+  <!-- ════════════════════════════════════════════
+       SUBMISSION SUMMARY
+  ═════════════════════════════════════════════ -->
+  @if (submittedData) {
+    <div class="summary-card">
+      <div class="summary-header">
+        <mat-icon class="summary-icon">verified</mat-icon>
+        <div>
+          <h2 class="summary-title">Registration Confirmed</h2>
+          <p class="summary-sub">Your details have been recorded. See you at the tournament!</p>
+        </div>
+      </div>
+      <mat-divider class="section-divider"></mat-divider>
+
+      <div class="summary-grid">
+        <div class="summary-group">
+          <p class="summary-group-label">Participant</p>
+          <div class="summary-row"><span class="s-key">Full Name</span><span class="s-val">{{ submittedData.fullName }}</span></div>
+          <div class="summary-row"><span class="s-key">Email</span><span class="s-val">{{ submittedData.email }}</span></div>
+          <div class="summary-row"><span class="s-key">Contact</span><span class="s-val">{{ submittedData.contactNumber }}</span></div>
+          <div class="summary-row"><span class="s-key">Date of Birth</span><span class="s-val">{{ submittedData.dateOfBirth | date:'mediumDate' }}</span></div>
+          <div class="summary-row"><span class="s-key">Gender</span><span class="s-val">{{ submittedData.gender }}</span></div>
+          @if (submittedData.address) {
+            <div class="summary-row"><span class="s-key">Address</span><span class="s-val">{{ submittedData.address }}</span></div>
+          }
+        </div>
+
+        <div class="summary-group">
+          <p class="summary-group-label">Tournament</p>
+          <div class="summary-row"><span class="s-key">Sport</span><span class="s-val">{{ submittedData.typeOfSport }}</span></div>
+          <div class="summary-row"><span class="s-key">Category</span><span class="s-val">{{ submittedData.category }}</span></div>
+          <div class="summary-row"><span class="s-key">Participation</span><span class="s-val">{{ submittedData.participationType }}</span></div>
+          @if (submittedData.participationType === 'Team') {
+            <div class="summary-row"><span class="s-key">Team Name</span><span class="s-val">{{ submittedData.teamName }}</span></div>
+            <div class="summary-row"><span class="s-key">Members</span><span class="s-val">{{ submittedData.numberOfTeamMembers }}</span></div>
+            @if (submittedData.coachName) {
+              <div class="summary-row"><span class="s-key">Coach</span><span class="s-val">{{ submittedData.coachName }}</span></div>
+            }
+            <div class="summary-row"><span class="s-key">Contact Person</span><span class="s-val">{{ submittedData.teamContactPerson }}</span></div>
+          }
+        </div>
+
+        <div class="summary-group">
+          <p class="summary-group-label">Preferences &amp; Medical</p>
+          @if (submittedData.preferredSchedule) {
+            <div class="summary-row"><span class="s-key">Schedule</span><span class="s-val">{{ submittedData.preferredSchedule }}</span></div>
+          }
+          <div class="summary-row"><span class="s-key">Jersey Size</span><span class="s-val">{{ submittedData.jerseySize }}</span></div>
+          @if (submittedData.bloodType) {
+            <div class="summary-row"><span class="s-key">Blood Type</span><span class="s-val">{{ submittedData.bloodType }}</span></div>
+          }
+          @if (submittedData.medicalConditions) {
+            <div class="summary-row"><span class="s-key">Medical Notes</span><span class="s-val">{{ submittedData.medicalConditions }}</span></div>
+          }
+          <div class="summary-row"><span class="s-key">Emergency Contact</span><span class="s-val">{{ submittedData.emergencyContactName }}</span></div>
+          <div class="summary-row"><span class="s-key">Emergency No.</span><span class="s-val">{{ submittedData.emergencyContactNumber }}</span></div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>
